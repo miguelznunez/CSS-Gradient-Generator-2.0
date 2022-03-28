@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Gradient Generator 2.0 - A better way to make and generate gradients</title>
+  <meta name="title" content="CSS Gradient Generator 2.0 - A better way to make and generate beautiful gradients">
+  <meta name="description"
+    content="A free CSS gradient generator tool for easilly creating linear, radial, or degree based gradients.">
+  <meta name="Identifier-URL" content="https://iamcodefoxx.github.io/CSS-Gradient-Generator/">
+  <link rel="canonical" href="https://iamcodefoxx.github.io/CSS-Gradient-Generator/">
+  <link rel="shortcut icon" href="gradient.png" />
+  <meta property="og:site_name" content="CSS Gradient Generator 2.0">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamcodefoxx.github.io/CSS-Gradient-Generator/">
+  <meta property="og:title" content="CSS Gradient Generator 2.0 | A better way to make and generate gradients">
+  <meta property="og:image">
+  <meta property="og:description"
+    content="A free CSS gradient generator tool for easilly creating linear, radial, or degree based gradients.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+<body>
+
+  <div class="app">
+    <aside class="sidebar">
+
+      <div class="branding">
+        <h2>CSS GRADIENT GENERATOR 2.0</h2>
+      </div>
+      <div class="sidebars">
+        <div class="side">
+          <div class="sidebar-content">
+            <div class="style">
+              <p>Style</p>
+              <div class="style-btns">
+                <div>
+                  <button class="linearBtn styleActive">LINEAR</button>
+                  <button class="radialBtn">RADIAL</button>
+                </div>
+                <i class="fas fa-chevron-circle-right" id="circle-right" onClick="slide('next')"></i>
+              </div>
+            </div>
+            <div class="inputs">
+              <p>Colors</p>
+              <div>
+                <input type="color" value="" class="hex1">
+                <input type="color" value="" class="hex2">
+              </div>
+            </div>
+            <div class="random">
+              <p>Random</p>
+              <i class="fas fa-random" id="randomGradientBtn"></i>
+            </div>
+            <div class="direction">
+              <p>Direction</p>
+              <div class="arrows">
+                <i class="fas fa-arrow-left  left active"></i>
+                <i class="fas fa-arrow-left  upperLeft"></i>
+                <i class="fas fa-arrow-left  lowerLeft"></i>
+                <i class="fas fa-arrow-up    up"></i>
+                <i class="fas fa-arrow-down  down"></i>
+                <i class="fas fa-arrow-left  lowerRight"></i>
+                <i class="fas fa-arrow-right upperRight"></i>
+                <i class="fas fa-arrow-right right"></i>
+              </div>
+              <div class="arrows">
+                <i class="far fa-circle circle"></i>
+              </div>
+              <div class="percent">
+                <p>Percent</p>
+                <div class="percent-ranges">
+                  <div>
+                    <div class="percent-ranges-label">
+                      <div id="percent-square-1"></div>
+                      <span id="color-square-1-per">0%</span>
+                    </div>
+                    <input type="range" id="percent-range-1" min="0" max="100" value="0"
+                      oninput="percentRange1(this.value)">
+                  </div>
+                  <div>
+                    <div class="percent-ranges-label">
+                      <div id="percent-square-2"></div>
+                      <span id="color-square-2-per">100%</span>
+                    </div>
+                    <input type="range" id="percent-range-2" min="0" max="100" value="100"
+                      oninput="percentRange2(this.value)">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="copy">
+              <p>Copy</p>
+              <div>
+                <button class="formatBtn" id="getHexBtn">HEX</button>
+                <button class="formatBtn" id="getRgbaBtn">RGBA</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="side">
+          <div class="sidebar-content">
+            <div class="style">
+              <p>Style</p>
+              <div class="style-btns">
+                <div>
+                  <button class="degreesBtn">DEGREES</button>
+                </div>
+                <i class="fas fa-chevron-circle-left" id="circle-left" onClick="slide('prev')"></i>
+              </div>
+            </div>
+            <div class="inputs">
+              <p>Colors</p>
+              <div>
+                <input type="color" value="" class="hex1">
+                <input type="color" value="" class="hex2">
+                <input type="color" value="" class="hex3">
+              </div>
+            </div>
+            <div class="random">
+              <p>Random</p>
+              <i class="fas fa-random" id="randomDegreesGradientBtn"></i>
+            </div>
+            <div class="degrees">
+              <p>Degrees</p>
+              <div class="degree-ranges">
+                <div>
+                  <div class="degree-ranges-label">
+                    <div id="color-square-1"></div>
+                    <span id="color-square-1-deg">217</span>
+                  </div>
+                  <input type="range" id="degree-range-1" min="-320" max="320" value="217"
+                    oninput="degreeRange1(this.value)">
+                </div>
+                <div>
+                  <div class="degree-ranges-label">
+                    <div id="color-square-2"></div>
+                    <span id="color-square-2-deg">127</span>
+                  </div>
+                  <input type="range" id="degree-range-2" min="-320" max="320" value="127"
+                    oninput="degreeRange2(this.value)">
+                </div>
+                <div>
+                  <div class="degree-ranges-label">
+                    <div id="color-square-3"></div>
+                    <span id="color-square-3-deg">320</span>
+                  </div>
+                  <input type="range" id="degree-range-3" min="-320" max="320" value="320"
+                    oninput="degreeRange3(this.value)">
+                </div>
+              </div>
+            </div>
+            <div class="copy">
+              <p>Copy</p>
+              <div>
+                <button class="formatBtn" id="getDegreesRgbaBtn">RGBA</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="gradient">
+      <div class="my-hamburger">
+        <div class="menu-toggle">
+          <div class="hamburger">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
